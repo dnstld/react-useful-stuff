@@ -18,3 +18,36 @@ const MyUtilFn = require('utils/MyUtilFn');
 // Instead of that:
 const MyUtilFn = require('../../../../utils/MyUtilFn');
 ```
+<details>
+  <summary>Code example</summary>
+
+  ### babel.config.js
+  ```js
+  {
+    "plugins": [
+      [
+        ["module-resolver", {
+          "root": ["./src"],
+          "alias": {
+            "@assets": "./src/assets",
+            "@components": "./src/components",
+          }
+        }]
+      ]
+    ]
+  }
+  ```
+  
+  ### tsconfig.json
+  ```json
+  {
+    "compilerOptions": {
+      "baseURL": "./",
+      "paths": {
+        "@assets/*": ["./src/assets/*"],
+        "@components/*": ["./src/components/*"]
+      }
+    }
+  }
+  ```
+</details>
